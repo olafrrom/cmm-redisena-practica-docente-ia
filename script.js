@@ -1,12 +1,12 @@
 // EDITA AQUÍ: esta colección controla contenido, orden y estado de las tarjetas.
 const resources = [
   {
-    id: "recurso-principal",
-    name: "Recurso principal del programa",
-    description: "Enlace prioritario de la experiencia. Sustituye este texto con la descripción final.",
-    type: "Recurso del programa",
-    category: "Recursos del programa",
-    url: "",
+    id: "estrategias-ia-educacion",
+    name: "Estrategias IA para Educación",
+    description: "Explora estrategias prácticas para integrar la inteligencia artificial en la enseñanza.",
+    type: "Catálogo digital",
+    category: "Explora",
+    url: "https://olafrrom.github.io/ai-strategy-compass/",
     icon: "01",
     priority: 1,
     featured: true,
@@ -14,43 +14,63 @@ const resources = [
     accent: "#2563eb"
   },
   {
-    id: "asistente-ia",
-    name: "Asistente IA",
-    description: "Espacio preparado para el asistente que acompañará la formación docente.",
-    type: "Asistente IA",
-    category: "Asistentes IA",
-    url: "",
+    id: "contenidos-drive",
+    name: "Presentaciones y contenidos",
+    description: "Consulta las presentaciones, materiales y contenidos compartidos del programa.",
+    type: "Google Drive",
+    category: "Recursos del programa",
+    url: "https://drive.google.com/drive/folders/1nYwMDUV2BG0eZSdwfl3GItkRT8e9R8S8?usp=sharing",
     icon: "02",
     priority: 2,
-    featured: false,
-    badge: "",
-    accent: "#7c3aed"
-  },
-  {
-    id: "herramienta-diseno",
-    name: "Herramienta para diseñar",
-    description: "Acceso directo a la herramienta de diseño seleccionada para el programa.",
-    type: "Herramienta",
-    category: "Diseña",
-    url: "",
-    icon: "03",
-    priority: 3,
     featured: false,
     badge: "",
     accent: "#059669"
   },
   {
-    id: "materiales-programa",
-    name: "Materiales del programa",
-    description: "Presentaciones, guías y documentos de consulta para las actividades.",
-    type: "Materiales",
-    category: "Recursos del programa",
+    id: "ia-taller",
+    name: "IA para el taller",
+    description: "Abre la colección de herramientas de inteligencia artificial que utilizaremos en las actividades.",
+    type: "Colección de herramientas",
+    category: "Asistentes IA",
     url: "",
-    icon: "04",
-    priority: 4,
+    action: "dialog",
+    dialogId: "workshop-tools-dialog",
+    icon: "03",
+    priority: 3,
     featured: false,
     badge: "",
-    accent: "#ea580c"
+    accent: "#7c3aed"
+  }
+];
+
+// EDITA AQUÍ: agrega o reorganiza las herramientas de la capa “IA para el taller”.
+const workshopTools = [
+  {
+    id: "chatgpt",
+    name: "ChatGPT",
+    description: "Ideación, conversación y creación asistida.",
+    url: "https://chatgpt.com/",
+    icon: "C",
+    priority: 1,
+    accent: "#0f766e"
+  },
+  {
+    id: "notebooklm",
+    name: "NotebookLM",
+    description: "Exploración y creación a partir de fuentes.",
+    url: "https://notebook.google.com/",
+    icon: "N",
+    priority: 2,
+    accent: "#2563eb"
+  },
+  {
+    id: "suno",
+    name: "Suno",
+    description: "Creación de música y recursos sonoros con IA.",
+    url: "https://suno.com/",
+    icon: "S",
+    priority: 3,
+    accent: "#7c3aed"
   }
 ];
 
@@ -64,14 +84,17 @@ const contactLinks = [
 
 const resourceGrid = document.querySelector("#resource-grid");
 const socialLinks = document.querySelector("#social-links");
+const toolDialog = document.querySelector("#workshop-tools-dialog");
+const toolGrid = document.querySelector("#tool-grid");
 
 function createResourceCard(resource) {
   const hasUrl = Boolean(resource.url?.trim());
-  const element = document.createElement(hasUrl ? "a" : "article");
+  const opensDialog = resource.action === "dialog";
+  const element = document.createElement(hasUrl ? "a" : opensDialog ? "button" : "article");
   const classes = ["resource-card"];
 
   if (resource.featured) classes.push("resource-card--featured");
-  if (!hasUrl) classes.push("resource-card--placeholder");
+  if (!hasUrl && !opensDialog) classes.push("resource-card--placeholder");
 
   element.className = classes.join(" ");
   element.style.setProperty("--accent", resource.accent || "#2563eb");
@@ -84,6 +107,11 @@ function createResourceCard(resource) {
     element.target = "_blank";
     element.rel = "noopener noreferrer";
     element.setAttribute("aria-label", `${resource.name}. Abre en una nueva pestaña.`);
+  } else if (opensDialog) {
+    element.type = "button";
+    element.dataset.dialogTarget = resource.dialogId;
+    element.setAttribute("aria-haspopup", "dialog");
+    element.setAttribute("aria-label", `${resource.name}. Abre la colección de herramientas.`);
   } else {
     element.setAttribute("aria-label", `${resource.name}. Enlace pendiente.`);
   }
@@ -102,10 +130,45 @@ function createResourceCard(resource) {
       <h3>${resource.name}</h3>
       <p>${resource.description}</p>
     </span>
-    <span class="resource-card__arrow" aria-hidden="true">${hasUrl ? "↗" : "…"}</span>
+    <span class="resource-card__arrow" aria-hidden="true">${hasUrl ? "↗" : opensDialog ? "+" : "…"}</span>
   `;
 
   return element;
+}
+
+function renderWorkshopTools() {
+  const fragment = document.createDocumentFragment();
+  [...workshopTools]
+    .sort((a, b) => a.priority - b.priority)
+    .forEach((tool) => {
+      const link = document.createElement("a");
+      link.className = "tool-link";
+      link.href = tool.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.style.setProperty("--tool-accent", tool.accent);
+      link.dataset.toolId = tool.id;
+      link.dataset.analyticsEvent = "workshop_tool_click";
+      link.setAttribute("aria-label", `${tool.name}. Abre en una nueva pestaña.`);
+      link.innerHTML = `
+        <span class="tool-link__icon" aria-hidden="true">${tool.icon}</span>
+        <span><strong>${tool.name}</strong><small>${tool.description}</small></span>
+        <span aria-hidden="true">↗</span>
+      `;
+      fragment.append(link);
+    });
+  toolGrid.replaceChildren(fragment);
+}
+
+function setupDialog() {
+  document.querySelectorAll("[data-dialog-target]").forEach((trigger) => {
+    trigger.addEventListener("click", () => toolDialog.showModal());
+  });
+
+  toolDialog.querySelector("[data-close-dialog]").addEventListener("click", () => toolDialog.close());
+  toolDialog.addEventListener("click", (event) => {
+    if (event.target === toolDialog) toolDialog.close();
+  });
 }
 
 function renderResources() {
@@ -148,4 +211,6 @@ function renderContactLinks() {
 }
 
 renderResources();
+renderWorkshopTools();
 renderContactLinks();
+setupDialog();

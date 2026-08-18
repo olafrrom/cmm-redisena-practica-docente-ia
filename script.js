@@ -10,7 +10,7 @@ const resources = [
     icon: "01",
     priority: 1,
     featured: true,
-    badge: "Destacado",
+    badge: "",
     accent: "#2563eb"
   },
   {
@@ -30,7 +30,7 @@ const resources = [
     id: "ia-taller",
     name: "IA para el taller",
     description: "Abre la colección de herramientas de inteligencia artificial que utilizaremos en las actividades.",
-    type: "Colección de herramientas",
+    type: "Herramientas",
     category: "Asistentes IA",
     url: "",
     action: "dialog",
@@ -76,8 +76,8 @@ const workshopTools = [
 
 // EDITA AQUÍ: agrega las URLs cuando estén confirmadas.
 const contactLinks = [
-  { id: "linkedin", label: "LinkedIn", url: "" },
-  { id: "instagram", label: "Instagram", url: "" }
+  { id: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/olaf-rom%C3%A1n/" },
+  { id: "instagram", label: "Instagram", url: "https://www.instagram.com/olafrrom/" }
   // Futuro: { id: "email", label: "Correo", url: "mailto:..." }
   // Futuro: { id: "whatsapp", label: "WhatsApp", url: "https://wa.me/..." }
 ];

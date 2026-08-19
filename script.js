@@ -80,6 +80,15 @@ const workshopTools = [
     icon: "S",
     priority: 4,
     accent: "#7c3aed"
+  },
+  {
+    id: "napkin",
+    name: "Napkin",
+    description: "Transforma texto en diagramas, mapas mentales, infografías y visuales claros para comunicar ideas complejas.",
+    url: "https://www.napkin.ai/es/",
+    icon: "N",
+    priority: 5,
+    accent: "#ea580c"
   }
 ];
 

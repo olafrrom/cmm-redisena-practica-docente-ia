@@ -46,12 +46,21 @@ const resources = [
 // EDITA AQUÍ: agrega o reorganiza las herramientas de la capa “IA para el taller”.
 const workshopTools = [
   {
+    id: "adaptatecnicasia",
+    name: "AdaptaTécnicasIA",
+    description: "Adapta técnicas didácticas de alto impacto según el objetivo de tu clase.",
+    url: "https://chatgpt.com/g/g-6805d104c4088191824031960afc956b-adaptatecnicasia",
+    icon: "A",
+    priority: 1,
+    accent: "#db2777"
+  },
+  {
     id: "chatgpt",
     name: "ChatGPT",
     description: "Ideación, conversación y creación asistida.",
     url: "https://chatgpt.com/",
     icon: "C",
-    priority: 1,
+    priority: 2,
     accent: "#0f766e"
   },
   {
@@ -60,7 +69,7 @@ const workshopTools = [
     description: "Exploración y creación a partir de fuentes.",
     url: "https://notebook.google.com/",
     icon: "N",
-    priority: 2,
+    priority: 3,
     accent: "#2563eb"
   },
   {
@@ -69,7 +78,7 @@ const workshopTools = [
     description: "Creación de música y recursos sonoros con IA.",
     url: "https://suno.com/",
     icon: "S",
-    priority: 3,
+    priority: 4,
     accent: "#7c3aed"
   }
 ];

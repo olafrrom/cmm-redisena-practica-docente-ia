@@ -1,4 +1,4 @@
-// EDITA AQUÍ: esta colección controla contenido, orden y estado de las tarjetas.
+// EDITA AQUÍ: esta colección controla contenido, orden y apariencia de las tarjetas.
 const resources = [
   {
     id: "estrategias-ia-educacion",
@@ -29,90 +29,221 @@ const resources = [
   {
     id: "ia-taller",
     name: "IA para el taller",
-    description: "Abre la colección de herramientas de inteligencia artificial que utilizaremos en las actividades.",
+    description: "Abre las herramientas de inteligencia artificial que utilizaremos en las actividades.",
     type: "Herramientas",
     category: "Asistentes IA",
-    url: "",
-    action: "dialog",
-    dialogId: "workshop-tools-dialog",
+    collectionId: "workshop-tools",
     icon: "03",
     priority: 3,
     featured: false,
     badge: "",
     accent: "#7c3aed"
-  }
-];
-
-// EDITA AQUÍ: agrega o reorganiza las herramientas de la capa “IA para el taller”.
-const workshopTools = [
-  {
-    id: "adaptatecnicasia",
-    name: "AdaptaTécnicasIA",
-    description: "Adapta técnicas didácticas de alto impacto según el objetivo de tu clase.",
-    url: "https://chatgpt.com/g/g-6805d104c4088191824031960afc956b-adaptatecnicasia",
-    icon: "A",
-    priority: 1,
-    accent: "#db2777"
   },
   {
-    id: "chatgpt",
-    name: "ChatGPT",
-    description: "Ideación, conversación y creación asistida.",
-    url: "https://chatgpt.com/",
-    icon: "C",
-    priority: 2,
-    accent: "#0f766e"
-  },
-  {
-    id: "notebooklm",
-    name: "NotebookLM",
-    description: "Exploración y creación a partir de fuentes.",
-    url: "https://notebook.google.com/",
-    icon: "N",
-    priority: 3,
+    id: "herramientas-ia-educacion",
+    name: "Herramientas de IA para Educación",
+    description: "Repositorio editorial curado para identificar herramientas por uso pedagógico, no por tendencia tecnológica.",
+    type: "Catálogo digital",
+    category: "Explora",
+    url: "https://olafrrom.github.io/catalogo-ia-educacion/",
+    icon: "04",
+    priority: 4,
+    featured: true,
+    badge: "",
     accent: "#2563eb"
   },
   {
-    id: "suno",
-    name: "Suno",
-    description: "Creación de música y recursos sonoros con IA.",
-    url: "https://suno.com/",
-    icon: "S",
-    priority: 4,
-    accent: "#7c3aed"
+    id: "poner-en-practica",
+    name: "Para poner en práctica",
+    description: "Explora bibliotecas de prompts y plantillas para llevar ideas al aula.",
+    type: "Recursos prácticos",
+    category: "Diseña y crea",
+    collectionId: "practice-resources",
+    icon: "05",
+    priority: 5,
+    featured: false,
+    badge: "",
+    accent: "#d97706"
   },
   {
-    id: "napkin",
-    name: "Napkin",
-    description: "Transforma texto en diagramas, mapas mentales, infografías y visuales claros para comunicar ideas complejas.",
-    url: "https://www.napkin.ai/es/",
-    icon: "N",
-    priority: 5,
-    accent: "#ea580c"
+    id: "para-saber-mas",
+    name: "Para saber más",
+    description: "Amplía la experiencia con lecturas y cursos recomendados sobre IA educativa.",
+    type: "Lecturas y cursos",
+    category: "Recursos del programa",
+    collectionId: "learn-more",
+    icon: "07",
+    priority: 7,
+    featured: false,
+    badge: "",
+    accent: "#0f766e"
   }
 ];
 
-// EDITA AQUÍ: agrega las URLs cuando estén confirmadas.
+// EDITA AQUÍ: cada colección alimenta una ventana de recursos.
+const resourceCollections = {
+  "workshop-tools": {
+    title: "IA para el taller",
+    description: "Selecciona la herramienta que utilizarás durante la actividad.",
+    analyticsEvent: "workshop_tool_click",
+    items: [
+      {
+        id: "adaptatecnicasia",
+        name: "AdaptaTécnicasIA",
+        description: "Adapta técnicas didácticas de alto impacto según el objetivo de tu clase.",
+        url: "https://chatgpt.com/g/g-6805d104c4088191824031960afc956b-adaptatecnicasia",
+        icon: "A",
+        priority: 1,
+        accent: "#db2777"
+      },
+      {
+        id: "chatgpt",
+        name: "ChatGPT",
+        description: "Ideación, conversación y creación asistida.",
+        url: "https://chatgpt.com/",
+        icon: "C",
+        priority: 2,
+        accent: "#0f766e"
+      },
+      {
+        id: "notebooklm",
+        name: "NotebookLM",
+        description: "Exploración y creación a partir de fuentes.",
+        url: "https://notebook.google.com/",
+        icon: "N",
+        priority: 3,
+        accent: "#2563eb"
+      },
+      {
+        id: "suno",
+        name: "Suno",
+        description: "Creación de música y recursos sonoros con IA.",
+        url: "https://suno.com/",
+        icon: "S",
+        priority: 4,
+        accent: "#7c3aed"
+      },
+      {
+        id: "napkin",
+        name: "Napkin",
+        description: "Transforma texto en diagramas, mapas mentales, infografías y visuales claros.",
+        url: "https://www.napkin.ai/es/",
+        icon: "N",
+        priority: 5,
+        accent: "#ea580c"
+      },
+      {
+        id: "gemini-canvas",
+        name: "Gemini Canvas",
+        description: "Crea documentos, aplicaciones y prototipos interactivos con asistencia de Gemini.",
+        url: "https://gemini.google/es/overview/canvas/?hl=es",
+        icon: "G",
+        priority: 6,
+        accent: "#1a73e8"
+      },
+      {
+        id: "claude-artifacts",
+        name: "Claude Artifacts",
+        description: "Construye contenidos, código y experiencias interactivas reutilizables.",
+        url: "https://claude.ai/artifacts",
+        icon: "C",
+        priority: 7,
+        accent: "#c15f3c"
+      },
+      {
+        id: "replit",
+        name: "Replit",
+        description: "Desarrolla, prueba y publica aplicaciones web con asistencia de IA.",
+        url: "https://replit.com/",
+        icon: "R",
+        priority: 8,
+        accent: "#f26207"
+      }
+    ]
+  },
+  "practice-resources": {
+    title: "Para poner en práctica",
+    description: "Bibliotecas y plantillas para diseñar experiencias educativas con IA.",
+    analyticsEvent: "practice_resource_click",
+    items: [
+      {
+        id: "ai-for-education-prompt-library",
+        name: "AI for Education Prompt Library",
+        description: "Prompts para planeación, evaluación, diseño educativo y creación de recursos.",
+        url: "https://www.aiforeducation.io/prompt-library",
+        icon: "AI",
+        priority: 1,
+        accent: "#2563eb"
+      },
+      {
+        id: "biblioteca-avanzada-prompts",
+        name: "Biblioteca avanzada de prompts educativos",
+        description: "Colección navegable de prompts educativos organizados por propósito.",
+        url: "https://eduprompts.tiddlyhost.com/?utm_source=chatgpt.com#Introducci%C3%B3n:Introducci%C3%B3n",
+        icon: "P",
+        priority: 2,
+        accent: "#7c3aed"
+      },
+      {
+        id: "awesome-notebooklm-templates",
+        name: "Awesome NotebookLM Templates",
+        description: "Prompts y estructuras para crear recursos multimedia y educativos con NotebookLM.",
+        url: "https://github.com/serenakeyitan/awesome-notebookLM-prompts#awesome-notebooklm-templates",
+        icon: "N",
+        priority: 3,
+        accent: "#059669"
+      }
+    ]
+  },
+  "learn-more": {
+    title: "Para saber más",
+    description: "Lecturas y cursos para profundizar en el uso educativo de la IA.",
+    analyticsEvent: "recommended_resource_click",
+    items: [
+      {
+        id: "notebooklm-neurodivert-udl",
+        group: "Lecturas recomendadas",
+        name: "NotebookLM: Revolutionizing Learning for Students with Neurodivert Challenges using AI and Universal Design Principles",
+        description: "Artículo académico sobre NotebookLM, neurodiversidad y Diseño Universal para el Aprendizaje.",
+        url: "https://nsuworks.nova.edu/fdla-journal/vol9/iss1/22/",
+        icon: "L",
+        priority: 1,
+        accent: "#2563eb"
+      },
+      {
+        id: "chatgpt-usos-estrategias",
+        group: "Cursos recomendados",
+        name: "ChatGPT - Usos y Estrategias",
+        description: "Curso en Coursera para aplicar ChatGPT de forma práctica y estratégica.",
+        url: "https://www.coursera.org/learn/chat-gpt",
+        icon: "C",
+        priority: 2,
+        accent: "#0056d2"
+      }
+    ]
+  }
+};
+
 const contactLinks = [
   { id: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/olaf-rom%C3%A1n/" },
   { id: "instagram", label: "Instagram", url: "https://www.instagram.com/olafrrom/" }
-  // Futuro: { id: "email", label: "Correo", url: "mailto:..." }
-  // Futuro: { id: "whatsapp", label: "WhatsApp", url: "https://wa.me/..." }
 ];
 
 const resourceGrid = document.querySelector("#resource-grid");
 const socialLinks = document.querySelector("#social-links");
-const toolDialog = document.querySelector("#workshop-tools-dialog");
-const toolGrid = document.querySelector("#tool-grid");
+const resourceDialog = document.querySelector("#resource-dialog");
+const dialogTitle = document.querySelector("#dialog-title");
+const dialogDescription = document.querySelector("#dialog-description");
+const dialogContent = document.querySelector("#dialog-content");
 
 function createResourceCard(resource) {
   const hasUrl = Boolean(resource.url?.trim());
-  const opensDialog = resource.action === "dialog";
-  const element = document.createElement(hasUrl ? "a" : opensDialog ? "button" : "article");
+  const opensCollection = Boolean(resource.collectionId);
+  const element = document.createElement(hasUrl ? "a" : opensCollection ? "button" : "article");
   const classes = ["resource-card"];
 
   if (resource.featured) classes.push("resource-card--featured");
-  if (!hasUrl && !opensDialog) classes.push("resource-card--placeholder");
+  if (!hasUrl && !opensCollection) classes.push("resource-card--placeholder");
 
   element.className = classes.join(" ");
   element.style.setProperty("--accent", resource.accent || "#2563eb");
@@ -125,11 +256,11 @@ function createResourceCard(resource) {
     element.target = "_blank";
     element.rel = "noopener noreferrer";
     element.setAttribute("aria-label", `${resource.name}. Abre en una nueva pestaña.`);
-  } else if (opensDialog) {
+  } else if (opensCollection) {
     element.type = "button";
-    element.dataset.dialogTarget = resource.dialogId;
+    element.dataset.collectionId = resource.collectionId;
     element.setAttribute("aria-haspopup", "dialog");
-    element.setAttribute("aria-label", `${resource.name}. Abre la colección de herramientas.`);
+    element.setAttribute("aria-label", `${resource.name}. Abre la colección de recursos.`);
   } else {
     element.setAttribute("aria-label", `${resource.name}. Enlace pendiente.`);
   }
@@ -148,55 +279,87 @@ function createResourceCard(resource) {
       <h3>${resource.name}</h3>
       <p>${resource.description}</p>
     </span>
-    <span class="resource-card__arrow" aria-hidden="true">${hasUrl ? "↗" : opensDialog ? "+" : "…"}</span>
+    <span class="resource-card__arrow" aria-hidden="true">${hasUrl ? "↗" : opensCollection ? "+" : "…"}</span>
   `;
 
   return element;
 }
 
-function renderWorkshopTools() {
+function createCollectionLink(item, collectionId, analyticsEvent) {
+  const link = document.createElement("a");
+  link.className = "tool-link";
+  link.href = item.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.style.setProperty("--tool-accent", item.accent || "#2563eb");
+  link.dataset.collectionId = collectionId;
+  link.dataset.itemId = item.id;
+  link.dataset.analyticsEvent = analyticsEvent;
+  link.setAttribute("aria-label", `${item.name}. Abre en una nueva pestaña.`);
+  link.innerHTML = `
+    <span class="tool-link__icon" aria-hidden="true">${item.icon}</span>
+    <span><strong>${item.name}</strong><small>${item.description}</small></span>
+    <span aria-hidden="true">↗</span>
+  `;
+  return link;
+}
+
+function renderCollection(collectionId) {
+  const collection = resourceCollections[collectionId];
+  if (!collection) return;
+
+  dialogTitle.textContent = collection.title;
+  dialogDescription.textContent = collection.description;
+  const orderedItems = [...collection.items].sort((a, b) => a.priority - b.priority);
+  const groups = [...new Set(orderedItems.map((item) => item.group || ""))];
   const fragment = document.createDocumentFragment();
-  [...workshopTools]
-    .sort((a, b) => a.priority - b.priority)
-    .forEach((tool) => {
-      const link = document.createElement("a");
-      link.className = "tool-link";
-      link.href = tool.url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.style.setProperty("--tool-accent", tool.accent);
-      link.dataset.toolId = tool.id;
-      link.dataset.analyticsEvent = "workshop_tool_click";
-      link.setAttribute("aria-label", `${tool.name}. Abre en una nueva pestaña.`);
-      link.innerHTML = `
-        <span class="tool-link__icon" aria-hidden="true">${tool.icon}</span>
-        <span><strong>${tool.name}</strong><small>${tool.description}</small></span>
-        <span aria-hidden="true">↗</span>
-      `;
-      fragment.append(link);
+
+  groups.forEach((groupName) => {
+    const items = orderedItems.filter((item) => (item.group || "") === groupName);
+
+    if (groups.length === 1 && !groupName) {
+      items.forEach((item) => {
+        fragment.append(createCollectionLink(item, collectionId, collection.analyticsEvent));
+      });
+      return;
+    }
+
+    const section = document.createElement("section");
+    section.className = "collection-group";
+    const heading = document.createElement("h3");
+    heading.className = "collection-group__title";
+    heading.textContent = groupName || "Recursos";
+    const itemGrid = document.createElement("div");
+    itemGrid.className = "collection-group__items";
+    items.forEach((item) => {
+      itemGrid.append(createCollectionLink(item, collectionId, collection.analyticsEvent));
     });
-  toolGrid.replaceChildren(fragment);
+    section.append(heading, itemGrid);
+    fragment.append(section);
+  });
+
+  dialogContent.replaceChildren(fragment);
+  resourceDialog.showModal();
 }
 
 function setupDialog() {
-  document.querySelectorAll("[data-dialog-target]").forEach((trigger) => {
-    trigger.addEventListener("click", () => toolDialog.showModal());
+  document.querySelectorAll("[data-collection-id]").forEach((trigger) => {
+    if (trigger.classList.contains("resource-card")) {
+      trigger.addEventListener("click", () => renderCollection(trigger.dataset.collectionId));
+    }
   });
 
-  toolDialog.querySelector("[data-close-dialog]").addEventListener("click", () => toolDialog.close());
-  toolDialog.addEventListener("click", (event) => {
-    if (event.target === toolDialog) toolDialog.close();
+  resourceDialog.querySelector("[data-close-dialog]").addEventListener("click", () => resourceDialog.close());
+  resourceDialog.addEventListener("click", (event) => {
+    if (event.target === resourceDialog) resourceDialog.close();
   });
 }
 
 function renderResources() {
-  const orderedResources = [...resources].sort((a, b) => {
-    if (a.featured !== b.featured) return Number(b.featured) - Number(a.featured);
-    return a.priority - b.priority;
-  });
-
   const fragment = document.createDocumentFragment();
-  orderedResources.forEach((resource) => fragment.append(createResourceCard(resource)));
+  [...resources]
+    .sort((a, b) => a.priority - b.priority)
+    .forEach((resource) => fragment.append(createResourceCard(resource)));
   resourceGrid.replaceChildren(fragment);
 }
 
@@ -205,23 +368,14 @@ function renderContactLinks() {
 
   contactLinks.forEach((contact) => {
     const item = document.createElement("li");
-    const hasUrl = Boolean(contact.url?.trim());
-
-    if (hasUrl) {
-      const link = document.createElement("a");
-      link.href = contact.url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.dataset.contactId = contact.id;
-      link.dataset.analyticsEvent = "contact_click";
-      link.textContent = contact.label;
-      item.append(link);
-    } else {
-      const placeholder = document.createElement("span");
-      placeholder.textContent = `${contact.label} · enlace pendiente`;
-      item.append(placeholder);
-    }
-
+    const link = document.createElement("a");
+    link.href = contact.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.dataset.contactId = contact.id;
+    link.dataset.analyticsEvent = "contact_click";
+    link.textContent = contact.label;
+    item.append(link);
     fragment.append(item);
   });
 
@@ -229,6 +383,5 @@ function renderContactLinks() {
 }
 
 renderResources();
-renderWorkshopTools();
 renderContactLinks();
 setupDialog();

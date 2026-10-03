@@ -6,42 +6,41 @@ Hub digital mobile-first del programa **Rediseña tu práctica docente con IA**.
 
 ## Estructura
 
-- `index.html`: estructura semántica del hub.
-- `styles.css`: diseño responsive y estilos base.
-- `script.js`: colección central de recursos, contactos y renderizado de tarjetas.
+- `index.html`: estructura semántica del hub y una ventana reutilizable.
+- `styles.css`: diseño responsive, tarjetas uniformes y estilos base.
+- `script.js`: recursos, colecciones, contactos y renderizado.
 
-La tarjeta **IA para el taller** abre una segunda capa con las herramientas de trabajo. Su contenido se administra en la colección `workshopTools` de `script.js`.
+Las tarjetas **IA para el taller**, **Para poner en práctica** y **Para saber más** abren colecciones dentro de una capa accesible. Todas se administran en `resourceCollections`.
 
 ## Editar recursos
 
-Abre `script.js` y modifica la colección `resources`. Cada recurso admite:
+La colección `resources` de `script.js` controla las tarjetas principales:
 
-- `id`: identificador único y estable para analítica.
-- `name`: nombre visible.
-- `description`: explicación breve.
-- `type`: tipo o plataforma.
-- `category`: categoría futura.
-- `url`: enlace externo; déjalo vacío mientras esté pendiente.
-- `icon`: identificador visual breve.
-- `priority`: orden numérico.
-- `featured`: `true` para mostrarlo como destacado y colocarlo primero.
-- `badge`: etiqueta opcional como `Nuevo`, `Recomendado` o `Destacado`.
-- `accent`: color de acento de la tarjeta.
+- `id`: identificador único para analítica.
+- `name`, `description`, `type` y `category`: contenido visible y clasificación.
+- `url`: enlace directo.
+- `collectionId`: colección que abre la tarjeta cuando no usa un enlace directo.
+- `icon`: número o identificador visual.
+- `priority`: orden.
+- `featured`: tratamiento visual azul, conservando el mismo tamaño.
+- `badge`: etiqueta opcional.
+- `accent`: color de acento.
 
-Los enlaces de LinkedIn e Instagram se administran en `contactLinks`, dentro del mismo archivo.
+El número 06 queda disponible para una futura tarjeta.
 
-Cada herramienta de `workshopTools` admite `id`, `name`, `description`, `url`, `icon`, `priority` y `accent`.
+## Editar colecciones
+
+`resourceCollections` contiene cada ventana y sus recursos. Cada elemento admite:
+
+- `id`, `name`, `description`, `url`, `icon`, `priority` y `accent`.
+- `group`: subtítulo opcional, usado en “Para saber más”.
 
 ## Analítica futura
 
-Las tarjetas incluyen los atributos `data-resource-id`, `data-resource-category` y `data-analytics-event="resource_click"`. Las herramientas utilizan `data-tool-id` y `data-analytics-event="workshop_tool_click"`. Los enlaces de contacto utilizan `data-contact-id` y `data-analytics-event="contact_click"`.
+Las tarjetas conservan `data-resource-id`, `data-resource-category` y `data-analytics-event="resource_click"`. Los recursos de las ventanas incluyen `data-collection-id`, `data-item-id` y un evento específico por colección.
 
 ## Publicación con GitHub Pages
 
-En el repositorio, abre **Settings → Pages** y selecciona:
-
-1. **Source:** Deploy from a branch
-2. **Branch:** `main`
-3. **Folder:** `/ (root)`
+**Settings → Pages → Deploy from a branch → main → / (root)**
 
 El sitio no requiere compilación, instalación ni backend.

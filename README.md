@@ -10,7 +10,7 @@ Hub digital mobile-first del programa **Rediseña tu práctica docente con IA**.
 - `styles.css`: diseño responsive, tarjetas uniformes y estilos base.
 - `script.js`: recursos, colecciones, contactos y renderizado.
 
-Las tarjetas **IA para el taller**, **Para poner en práctica** y **Para saber más** abren colecciones dentro de una capa accesible. Todas se administran en `resourceCollections`.
+Las tarjetas **IA para el taller**, **Para poner en práctica**, **Para compartir** y **Para saber más** abren colecciones dentro de una capa accesible. Todas se administran en `resourceCollections`.
 
 ## Editar recursos
 
@@ -26,7 +26,7 @@ La colección `resources` de `script.js` controla las tarjetas principales:
 - `badge`: etiqueta opcional.
 - `accent`: color de acento.
 
-El número 06 queda disponible para una futura tarjeta.
+La tarjeta 06 reúne el Showroom y los recursos de participación en vivo.
 
 ## Editar colecciones
 

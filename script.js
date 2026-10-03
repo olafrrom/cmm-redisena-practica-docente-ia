@@ -66,6 +66,19 @@ const resources = [
     accent: "#d97706"
   },
   {
+    id: "para-compartir",
+    name: "Para compartir",
+    description: "Comparte ideas, creaciones e iniciativas con la comunidad del programa.",
+    type: "Showroom y participación",
+    category: "Comparte",
+    collectionId: "share-resources",
+    icon: "06",
+    priority: 6,
+    featured: false,
+    badge: "",
+    accent: "#db2777"
+  },
+  {
     id: "para-saber-mas",
     name: "Para saber más",
     description: "Amplía la experiencia con lecturas y cursos recomendados sobre IA educativa.",
@@ -192,6 +205,33 @@ const resourceCollections = {
         icon: "N",
         priority: 3,
         accent: "#059669"
+      }
+    ]
+  },
+  "share-resources": {
+    title: "Para compartir",
+    description: "Comparte ideas, creaciones e iniciativas con la comunidad del programa.",
+    analyticsEvent: "shared_resource_click",
+    items: [
+      {
+        id: "showroom-padlet",
+        group: "Showroom",
+        name: "Padlet",
+        description: "Publica y explora las creaciones desarrolladas durante el programa.",
+        url: "https://padlet.com/cursovirtualolaf/showroom-ia-colegio-ma-montessori-dagxawdrk6vjao9v",
+        icon: "P",
+        priority: 1,
+        accent: "#ee4566"
+      },
+      {
+        id: "menti-sesion-2026-10-03",
+        group: "Sesión en vivo",
+        name: "Menti · Sesión 03.10.2026",
+        description: "Preescolar y Primaria · Módulo 5: Gamificación y experiencias interactivas con IA.",
+        url: "https://www.menti.com/al389hwhpbx5",
+        icon: "M",
+        priority: 2,
+        accent: "#5b5ce2"
       }
     ]
   },

@@ -224,11 +224,11 @@ const resourceCollections = {
         accent: "#ee4566"
       },
       {
-        id: "menti-sesion-2026-10-03",
+        id: "menti-sesion-2026-10-30",
         group: "Sesión en vivo",
-        name: "Menti · Sesión 03.10.2026",
-        description: "Preescolar y Primaria · Módulo 5: Gamificación y experiencias interactivas con IA.",
-        url: "https://www.menti.com/al389hwhpbx5",
+        name: "Menti · Sesión 30.10.2026",
+        description: "Secundaria · Módulo 5: Gamificación y experiencias interactivas con IA.",
+        url: "https://www.menti.com/algjnavc8ug5",
         icon: "M",
         priority: 2,
         accent: "#5b5ce2"

@@ -90,6 +90,19 @@ const resources = [
     featured: false,
     badge: "",
     accent: "#0f766e"
+  },
+  {
+    id: "lx-designer",
+    name: "LX Designer",
+    description: "Diseña experiencias de aprendizaje centradas en quien aprende.",
+    type: "Canvas de diseño",
+    category: "Diseña",
+    url: "https://lxdesigner.lovable.app/",
+    icon: "08",
+    priority: 8,
+    featured: false,
+    badge: "",
+    accent: "#fd6e6e"
   }
 ];
 

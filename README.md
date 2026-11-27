@@ -28,6 +28,8 @@ La colección `resources` de `script.js` controla las tarjetas principales:
 
 La tarjeta 06 reúne el Showroom y los recursos de participación en vivo.
 
+La tarjeta 08 ofrece acceso directo a **LX Designer**, canvas para diseñar experiencias centradas en quien aprende.
+
 ## Editar colecciones
 
 `resourceCollections` contiene cada ventana y sus recursos. Cada elemento admite:
